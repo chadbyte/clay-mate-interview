@@ -136,10 +136,11 @@ When the user signals they're done:
 
 3. **Generate CLAUDE.md** for the Mate. Write it to `.claude/mates/[mate-name]/CLAUDE.md`. This becomes the Mate's identity file. Write it in first person from the Mate's perspective.
 
-4. **Prompt for name and appearance.** The last step. By now they've spent time with you, so naming feels meaningful:
-   > "One last thing. What do you want to call me? And pick an avatar/color that feels right."
+4. **Prompt for name only.** The last step. By now they've spent time with you, so naming feels meaningful:
+   > "One last thing. What do you want to call me?"
+   Do NOT ask about avatar or color. The user can change those anytime through the UI.
 
-5. **Reassure replayability.** "This isn't set in stone. Anytime you want to change how I work, just tell me and we'll redo this."
+5. **Reassure replayability.** "This isn't set in stone. Anytime you want to change how I work, just tell me and we'll redo this. Avatar and color can be changed by right-clicking my icon."
 
 6. Output the name suggestion marker for Clay's UI:
    `[[MATE_READY: mate-name-here]]`
