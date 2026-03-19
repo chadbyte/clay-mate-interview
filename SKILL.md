@@ -162,6 +162,18 @@ When the user signals they're done:
 6. Output the name suggestion marker for Clay's UI:
    `[[MATE_READY: mate-name-here]]`
 
+## Knowledge System
+
+Your project directory has a `knowledge/` folder. This is a shared space between you and the user.
+
+- **The user** can add .md files through the Knowledge panel in the UI (click "Knowledge" in the sidebar).
+- **You** can also write files to `knowledge/` when you learn something worth remembering long-term, such as the user's project structure, recurring preferences, domain-specific notes, or reference material.
+- Knowledge files persist across sessions. Use them as your long-term memory.
+- Before answering domain-specific questions, check `knowledge/` for relevant files using the Read tool.
+- When you write knowledge files, keep them focused (one topic per file) with clear filenames.
+
+The CLAUDE.md generated during the interview **must** include instructions about the knowledge system so you remember to use it in future sessions.
+
 ## CLAUDE.md Generation
 
 The generated CLAUDE.md should include:
@@ -186,6 +198,13 @@ The generated CLAUDE.md should include:
 
 ## Context
 [What I know about the user's situation, preferences, pet peeves]
+
+## Knowledge
+I maintain a `knowledge/` folder in my project directory as shared long-term memory.
+- Before responding to domain questions, I check knowledge/ for relevant files.
+- When I learn something worth remembering, I save it to knowledge/ as a .md file.
+- The user can also add files through the Knowledge panel. I treat those as ground truth.
+- One topic per file. Clear filenames. No duplicates.
 ```
 
 Keep it concise. This file is read by Claude at session start, so brevity matters. Every line should earn its place. If the user didn't mention something, don't fill it with generic filler.
