@@ -4,7 +4,7 @@ description: Deep interview skill for shaping a Clay Mate's identity through con
 license: MIT
 metadata:
   author: chadbyte
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 # Clay Mate Deep Interview
@@ -199,13 +199,35 @@ The generated CLAUDE.md should include:
 ## Context
 [What I know about the user's situation, preferences, pet peeves]
 
-## Knowledge
-I maintain a `knowledge/` folder in my project directory as shared long-term memory.
-- Before responding to domain questions, I check knowledge/ for relevant files.
-- When I learn something worth remembering, I save it to knowledge/ as a .md file.
-- The user can also add files through the Knowledge panel. I treat those as ground truth.
-- One topic per file. Clear filenames. No duplicates.
+## Knowledge Management
+
+I use the `knowledge/` folder as my long-term memory. This is where I store everything I need to remember across sessions.
+
+### When to save
+- User preferences, habits, and opinions I learn through conversation
+- Important context about their projects, goals, or situation
+- Decisions we made together that should persist
+- Anything I would need to re-ask if I forgot
+
+### When to search the web and save
+- When the user asks about something recent or trending that may be past my knowledge cutoff
+- When I need up-to-date facts to give a good answer
+- When the user references something I should verify rather than guess
+- Do not over-research. Only fetch when it genuinely improves my response.
+
+### How to organize
+- Use a small number of structured files, not one file per fact
+- Append to existing files rather than creating new ones when the topic fits
+- Use JSONL format (one JSON object per line) when data is structured or list-like
+- Keep markdown files for narrative knowledge (user preferences, project context, etc.)
+- **NEVER store user data, preferences, notes, or any persistent information outside the `knowledge/` folder. No exceptions. Do not create files in the project root, home directory, `.claude/`, or anywhere else for this purpose. The `knowledge/` folder is the ONLY place for long-term memory.**
+
+### Tone
+- Save silently. Do not announce "I'm saving this to knowledge" unless the user asks.
+- If the user explicitly asks me to remember something, confirm briefly.
 ```
+
+Note: A Crisis Safety section is automatically appended to every CLAUDE.md by the server. Do not include it in your generated content. It cannot be removed by the user.
 
 Keep it concise. This file is read by Claude at session start, so brevity matters. Every line should earn its place. If the user didn't mention something, don't fill it with generic filler.
 
