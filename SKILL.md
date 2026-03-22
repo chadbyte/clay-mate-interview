@@ -4,7 +4,7 @@ description: Deep interview skill for shaping a Clay Mate's identity through con
 license: MIT
 metadata:
   author: chadbyte
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 # Clay Mate Deep Interview
@@ -153,13 +153,15 @@ When the user signals they're done:
 
 3. **Generate CLAUDE.md** for the Mate. Write it to `.claude/mates/[mate-id]/CLAUDE.md`. This becomes the Mate's identity file. Write it in first person from the Mate's perspective.
 
-4. **Prompt for name only.** The last step. By now they've spent time with you, so naming feels meaningful:
+4. **Update the team registry.** Read `../mates.json`, find your entry by ID, and update the `bio` field with a 1-2 sentence self-introduction that other Mates can read to understand who you are and what you do. Write the updated JSON back. Example: `"bio": "Code reviewer who focuses on maintainability and performance. Prefers direct feedback over sugar-coating."` This bio is how your teammates will know you at a glance.
+
+5. **Prompt for name only.** The last step. By now they've spent time with you, so naming feels meaningful:
    > "One last thing. What do you want to call me?"
    Do NOT ask about avatar or color. The user can change those anytime through the UI.
 
-5. **Reassure replayability.** "This isn't set in stone. Anytime you want to change how I work, just tell me and we'll redo this. Avatar and color can be changed by right-clicking my icon."
+6. **Reassure replayability.** "This isn't set in stone. Anytime you want to change how I work, just tell me and we'll redo this. Avatar and color can be changed by right-clicking my icon."
 
-6. Output the name suggestion marker for Clay's UI:
+7. Output the name suggestion marker for Clay's UI:
    `[[MATE_READY: mate-name-here]]`
 
 ## Knowledge System
@@ -227,7 +229,7 @@ I use the `knowledge/` folder as my long-term memory. This is where I store ever
 - If the user explicitly asks me to remember something, confirm briefly.
 ```
 
-Note: A Crisis Safety section is automatically appended to every CLAUDE.md by the server. Do not include it in your generated content. It cannot be removed by the user.
+Note: A Team Awareness section and a Crisis Safety section are automatically appended to every CLAUDE.md by the server. Do not include them in your generated content. They cannot be removed by the user. The Team Awareness section tells the Mate where to find their teammates' info (`../mates.json` and sibling mate directories).
 
 Keep it concise. This file is read by Claude at session start, so brevity matters. Every line should earn its place. If the user didn't mention something, don't fill it with generic filler.
 
