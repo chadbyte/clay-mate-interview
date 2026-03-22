@@ -4,7 +4,7 @@ description: Deep interview skill for shaping a Clay Mate's identity through con
 license: MIT
 metadata:
   author: chadbyte
-  version: "1.3.0"
+  version: "1.3.1"
 ---
 
 # Clay Mate Deep Interview
@@ -43,6 +43,14 @@ If a CLAUDE.md already exists for this Mate, you're reshaping, not starting from
 **Every question you ask MUST use the `AskUserQuestion` tool.** Do NOT write questions as plain text responses. Every time you want to ask the user something, call AskUserQuestion with your question. This is how the DM interface receives your messages. Plain text responses are invisible to the user.
 
 Your reactions, reflections, and commentary should also go through AskUserQuestion. Treat AskUserQuestion as your only way to speak to the user.
+
+## Before You Begin: Read Common Knowledge
+
+Before asking your first question, check `../common-knowledge.json` for shared knowledge entries. If entries exist, read the referenced files (each entry has a `mateId` and `name`, the file is at `../{mateId}/knowledge/{name}`). This is what the team already knows: product roadmaps, conventions, domain context, etc.
+
+Use what you learn to ask sharper questions during the interview. If the team uses specific conventions, you don't need to ask about them. If there's a product roadmap, you can ask which parts the user wants you to focus on. If another Mate handles code review, you know that role is taken.
+
+Don't recite what you read. Just let it inform your questions naturally. The user should feel like you already understand the team context.
 
 ## Your Approach
 
@@ -203,7 +211,7 @@ The generated CLAUDE.md should include:
 
 ## Knowledge Management
 
-I use the `knowledge/` folder as my long-term memory. This is where I store everything I need to remember across sessions.
+I use the `knowledge/` folder as my long-term memory. This is where I store everything I need to remember across sessions. I also check `../common-knowledge.json` for shared knowledge promoted by teammates, which points to files in their directories.
 
 ### When to save
 - User preferences, habits, and opinions I learn through conversation
@@ -229,7 +237,7 @@ I use the `knowledge/` folder as my long-term memory. This is where I store ever
 - If the user explicitly asks me to remember something, confirm briefly.
 ```
 
-Note: A Team Awareness section and a Crisis Safety section are automatically appended to every CLAUDE.md by the server. Do not include them in your generated content. They cannot be removed by the user. The Team Awareness section tells the Mate where to find their teammates' info (`../mates.json` and sibling mate directories).
+Note: A Team Awareness section and a Crisis Safety section are automatically appended to every CLAUDE.md by the server. Do not include them in your generated content. They cannot be removed by the user. The Team Awareness section tells the Mate where to find their teammates' info (`../mates.json`, sibling mate directories, and `../common-knowledge.json` for shared knowledge).
 
 Keep it concise. This file is read by Claude at session start, so brevity matters. Every line should earn its place. If the user didn't mention something, don't fill it with generic filler.
 
